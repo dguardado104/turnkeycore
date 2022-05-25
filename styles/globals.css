@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body {
   padding: 0;
@@ -13,4 +17,40 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.main{
+  background-color: rgb(39, 65, 87);
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.container{
+  max-width: 768px;
+  background-color: #fff;
+}
+
+.btn-primary{
+  margin-right: 1rem;
+  color: #fff;
+  padding: .5rem 1.25rem;
+  border-radius: 2rem;
+  transition: opacity .2s ease-in-out;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-close-notice:hover{
+  opacity: .5;
+}
+
+button[disabled]{
+  opacity: .5;
+}
+
+.btn-close-notice{
+  background-color: aliceblue;
+  padding: .5rem;
+  border-radius: 2rem;
+  transition: opacity .2s ease-in-out;
+  margin-bottom: 1rem;
 }
