@@ -47,10 +47,21 @@ button[disabled]{
   opacity: .5;
 }
 
+button.active{
+  opacity: .5;
+  pointer-events: none;
+}
+
+.panel{
+  display: none;
+}
+.panel.show{
+  display: block;
+}
+
 .btn-close-notice{
   background-color: aliceblue;
   padding: .5rem;
   border-radius: 2rem;
   transition: opacity .2s ease-in-out;
-  margin-bottom: 1rem;
 }

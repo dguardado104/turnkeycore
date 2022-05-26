@@ -7,27 +7,22 @@ import Notice from '../components/Notice'
 
 export default function Home() {
 
-  const [orderActivity, setOrderActivity] = useState(true)
-  const [trackingActivity, setTrackingActivity] = useState(false)
+  const activityTab = e => { 
+    let panels = document.querySelectorAll(".panel")
+    let buttons = document.querySelectorAll(".panel-link")
 
-  const handleActivity = e => {
+    buttons.forEach(el => {
+      el.classList.remove("active")
+    })
 
-    let btn = e.target
-
-    if(btn.getAttribute("disabled") == null){
-      btn.setAttribute("disabled","disabled")
-    }else{
-      btn.removeAttribute("disabled")
-    }
-    
-
-    if(orderActivity == true){
-      setOrderActivity(false)
-      setTrackingActivity(true)
-    }else{
-      setOrderActivity(true)
-      setTrackingActivity(false)
-    }
+    panels.forEach(el => {
+      if(el.classList.contains(e.target.getAttribute('data-target'))){
+        el.classList.add("show")
+        e.target.classList.add("active")
+      }else{
+        el.classList.remove("show")
+      }
+    })
   }
 
 
@@ -43,12 +38,16 @@ export default function Home() {
               <span className='font-bold text-lg'>Recently Activity</span>
             </div>
             <div className='flex'>
-              <button className='btn-primary bg-sky-600' onClick={handleActivity}>Order Activity</button>
-              <button className='btn-primary bg-sky-600' onClick={handleActivity}>Tracking Activity</button>
+              <button className='panel-link btn-primary bg-sky-600 active' data-target="order-panel" onClick={activityTab} >Order Activity</button>
+              <button className='panel-link btn-primary bg-sky-600' data-target="tracking-panel" onClick={activityTab}>Tracking Activity</button>
             </div>
             <div className='mt-4'>
-              { orderActivity ? <OrderActivity /> : '' }
-              { trackingActivity ? <TrackingActivity /> : ''}
+              <div className="panel order-panel show">
+                <OrderActivity />
+              </div>
+              <div className="panel tracking-panel">
+              <TrackingActivity />
+              </div>
             </div>
           </div>
         </div>
