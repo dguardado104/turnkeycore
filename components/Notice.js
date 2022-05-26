@@ -12,7 +12,7 @@ const Notice = () => {
   return (
     <>
     {
-      !notice ? '' :
+      notice ? '' :
       <div className="bg-slate-300 rounded mb-4 p-4">
         <div className="flex justify-between items-center mb-4">
           <span className="font-bold">Lorem ipsum dolor</span>

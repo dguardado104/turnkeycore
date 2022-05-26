@@ -65,3 +65,33 @@ button.active{
   border-radius: 2rem;
   transition: opacity .2s ease-in-out;
 }
+
+/* timeline */
+
+.t-line{
+  width: 25%;
+  height: 5px;
+  background-color: slategray;
+}
+
+.t-circle{
+  width: 14px;
+  height: 14px;
+  background-color: slategray;
+  border-radius: 50%;
+}
+
+.t-circle.active{
+  border: 5px solid slategray;
+  background-color: transparent;
+  width: auto;
+  height: auto;
+  padding: .5rem;
+  color: slategray;
+}
+
+@media (max-width: 600px){
+  .t-line{
+    width: 20%;
+  }
+}
