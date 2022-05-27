@@ -1,6 +1,7 @@
 import Skeleton from 'react-loading-skeleton'
 import { ClockIcon, CurrencyDollarIcon, TruckIcon, CheckCircleIcon } from '@heroicons/react/solid'
 import { useState } from 'react'
+import React from 'react'
 
 const Timeline = () => {
 
@@ -9,7 +10,7 @@ const Timeline = () => {
   const status = [
     {
       statusName: "pending",
-      active: false,
+      active: true,
       icon: <ClockIcon className="h-5 w-5" />,
       position: 0
     },
@@ -27,37 +28,21 @@ const Timeline = () => {
     },
     {
       statusName: "shipped",
-      active: true,
+      active: false,
       icon: <CheckCircleIcon className="h-5 w-5" />,
       position: 3
     }]
 
 
   const dataList = status.map((item, index) => {
-
-    console.log("is circle? ", circle)
-
-    if(circle == true){
-      
-      circle = false
-
-      if(item.active){
-
-        return <div className='t-circle active' key={index}>{item.icon}</div>
-      }
-
-
-      return <div className='t-circle' key={index}></div>
-     
-    }
-
-    circle = true
-      
-    if( (index+1) != status.length){
-
-      return <div className='t-line' key={index}></div>
-    }
-    
+    return(
+      <React.Fragment key={index}>
+        <div className={`t-circle ${item.active ? 'active' : ''}`} >{ item.active ? item.icon : ''}</div>
+        {
+          (index+1) != status.length ?  <div className='t-line' ></div> : null
+        }
+      </React.Fragment>
+    ) 
   })
 
 
