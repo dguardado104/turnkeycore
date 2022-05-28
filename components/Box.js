@@ -17,28 +17,26 @@ const Box = (props) => {
         { !data.brand.primaryColor ? <Skeleton width={"150px"} /> : <span className='font-bold text-xl' style={{color: data.brand.primaryColor}}>Order Information</span> }
       </div>
       
-
-      {
-        !data.orderInformation ? <Skeleton count={3} /> :
-
-        <ul>
-          <li>
-            <b>{ data.orderInformation.userName + " " + data.orderInformation.orderNumber}</b>
-          </li>
-          <li>
-            Priority <b>{data.orderInformation.priority}</b>
-          </li>
-          <li>
-            Shipped Via <b>{data.orderInformation.shippedVia}</b>
-          </li>
-        </ul>
-      }
+      <ul>
+        <li>
+          {data.orderInformation.userName && data.orderInformation.orderNumber ? <b>{ data.orderInformation.userName + " " + data.orderInformation.orderNumber}</b> : <Skeleton /> }
+        </li>
+        <li>
+          { data.orderInformation.priority ? <span>Priority <b>{data.orderInformation.priority}</b></span> : <Skeleton />} 
+        </li>
+        <li>
+          { data.orderInformation.shippedVia ? <span>Shipped Via <b>{data.orderInformation.shippedVia}</b></span> : <Skeleton /> }
+        </li>
+      </ul>
       
       <div className='pt-4 flex justify-center'>
         { !data.orderInformation.orderStatus ? <Skeleton width={"100px"} /> : <b className='uppercase'>{data.orderInformation.orderStatus}</b> }
       </div>
 
-      <Timeline data={dataTimeline}  />
+      { dataTimeline ? <Skeleton height={"50px"}/> : <Timeline data={dataTimeline}  />
+      
+      }
+      
 
       <div className='flex justify-center'>
         <ul>

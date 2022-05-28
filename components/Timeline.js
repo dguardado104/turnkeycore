@@ -41,11 +41,9 @@ const Timeline = (props) => {
 
   return (
     <div className='my-2'>
-      { !status ? <Skeleton height={"50px"}/> : 
         <div className='flex justify-center items-center'>
           { dataList }
         </div>
-      }
       <style jsx>{`
       
       .t-line {

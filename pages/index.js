@@ -25,6 +25,34 @@ export default function Home() {
     })
   }
 
+
+  const data = {
+    brand: {
+      name: '',
+      logoUrl: '',
+      emailSupport: '',
+      primaryColor: '',
+      pageTitle: ''
+    },
+    links: {
+      designDetailLink: ""
+    },
+    orderInformation: {
+      orderNumber: null,
+      userName: "",
+      priority: "",
+      shippedVia: "",
+      orderStatus: "",
+      customDates: [],
+      orderActivityList: [],
+      trackingActivity: {
+        list: []
+      }
+    }
+  }
+
+  /*
+
   const data = {
     brand: {
       name: 'Bowlifi',
@@ -71,12 +99,14 @@ export default function Home() {
     }
   }
 
+  */
+
 
   return (
     <>
       <Head>
-        <title>{data.brand.name} - {data.brand.pageTitle}</title>
-        <link rel="icon" type="image/png" href={data.brand.logoUrl}/>
+        <title>{!data == {} ? data.brand.name + "-" + data.brand.pageTitle : 'Turnkeycore'}</title>
+        <link rel="icon" type="image/png" href={!data == {} ? data.brand.logoUrl : '/favicon.ico'}/>
       </Head>
 
       <div className='main'>
